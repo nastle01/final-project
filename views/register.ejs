@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Document</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        padding: auto;
+    }
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 200px;
+        background-image: url("https://i.pinimg.com/originals/29/14/97/2914979d57cf620dbf74856235f6f704.gif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: 'Montserrat', sans-serif;
+        padding-right: 140px;
+    }
+    .btn {
+        width: 80px;
+        height: 30px;
+        font-size: 10px;
+        padding: auto;
+        background-color: rgb(48, 241, 0);
+        border-radius: 20px;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        box-shadow: 0px 8px 15px rgba(231, 231, 231, 0.1);
+        transition: all 0.3s ease;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    }
+
+    .container .btn {
+        border: none;
+        outline: none;
+        width: 200px;
+        padding: 15px;
+        margin: 10px auto;
+        font-size: 1.5rem;
+        color: #fff;
+        background: #ff14b1;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 1px 1px 6px #616161;
+        transition: ALL 0.3s ease;
+
+    }
+
+    .container .btn:hover {
+        background: #ff3BD5;
+        background: #2cea7b;
+        transform: translateY(-7px);
+        color: rgb(255, 255, 255);
+        box-shadow: 0px 10px 25px rgba(46, 223, 229, 0.455);
+    }
+
+    .container .account a {
+        text-decoration: none;
+        color: #616161;
+    }
+  </style>
+</head>
+<body>
+  <div class="col-sm-6 bg-light rounded border py-3 offset-sm-1">
+    <h2 class="text-center">Register</h2>
+
+    <form action="/register" method="POST" novalidate>
+            <div class="form-group">
+              <label for="_rname">Name</label>
+              <input type="text" name="user_name" id="_rname" class="form-control" placeholder="Name" value="<%= (locals.old_data) ? old_data.user_name : ''; %>" required>
+            </div>
+            <div class="form-group">
+              <label for="_remail">Email</label>
+              <input type="email" name="user_email" id="_remail" class="form-control" placeholder="Email" value="<%= (locals.old_data) ? old_data.user_email : ''; %>" required>
+            </div>
+            <div class="form-group">
+              <label for="_rpass">Password</label>
+              <input type="password" name="user_pass" id="_rpass" class="form-control" placeholder="Password" required>
+            </div>
+            <% if (locals.register_error) { 
+              register_error.forEach(function(error_msg){ %>
+              <div class="alert alert-danger" role="alert"><%= error_msg %></div>
+            <% });
+            } %>
+            <button type="submit" class="btn btn-success">Sign Up</button>
+            <a href="/logout" class="btn btn-danger">back</a>
+        </form>
+</div>
+</body>
+</html>

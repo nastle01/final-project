@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        body {
+            background-image: url(https://cdn.palungjit.org/photos/l/102/102486-1502308673-4154da59c9910b60860ff7b1e53f4537.gif);
+            background-size: 100%;
+            background-attachment: fixed;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container p-5">
+        <div class="card">
+            <div class="card-body">
+                <a class="btn btn-sm btn-success float-right" href="../adminAction/add">เพิ่มข้อมูล</a>
+                        <h1>Admin</h1>
+                        <div class="card-body">
+                            <% if(data.length) { %>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th width="200px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(let i=0; i < data.length; i++) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= data[i].id %>
+                                                </th>
+                                                <td>
+                                                    <%= data[i].name %>
+                                                </td>
+                                                <td>
+                                                    <%= data[i].email %>
+                                                </td>
+                                                
+                                                <td>
+                                                    <a class="btn btn-sm btn-warning" href="../adminAction/edit/<%= data[i].id %>">แก้ไขข้อมูล</a>
+                                                    <a href="../delete/<%= data[i].id %>" onclick="return alert('เราได้ทำการลบข้อมูลเรียบร้อยแล้ว')"class="btn btn-sm btn-danger delete">ลบข้อมูล</a>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+                                <% } %>
+
+                                    <!-- if result is empty -->
+                                    <% if(!data.length) { %>
+                                        <p class="text-center">No book found!</p>
+                                        <a href="/logout" class="btn btn-danger">Logout</a>
+                                        <% } %>
+                        </div>
+                        <a href="/" class="btn btn-secondary btn-sm mt-2 mb-2 p-2">กลับ</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
